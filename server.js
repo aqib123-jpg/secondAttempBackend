@@ -11,10 +11,16 @@ const db = mysql.createConnection({
     // user: 'root',
     // password: 'MySqL321@', 
     // database: 'CHECKINGECOMMERCE'
+    // host: process.env.DB_HOST,
+    // user: process.env.DB_USER,
+    // password: process.env.DB_PASSWORD, 
+    // database: process.env.DB_NAME
+
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD, 
-    database: process.env.DB_NAME
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT
 });
 
 db.connect(err => {
@@ -53,7 +59,8 @@ app.get('/api/users', (req, res) => {
   });
 });
 
-const PORT = 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
 });
