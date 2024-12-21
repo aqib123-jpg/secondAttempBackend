@@ -42,6 +42,7 @@ db.query(
 );
 
 app.post('/api/add-user', (req, res) => {
+  console.log("inside it ");
   const { name, number, age } = req.body;
   const query = 'INSERT INTO USERDATA (NAME, NUMBER, AGE) VALUES (?, ?, ?)';
   db.query(query, [name, number, age], (err) => {
@@ -61,6 +62,6 @@ app.get('/api/users', (req, res) => {
 
 const port = process.env.PORT || 5000;
 
-app.listen(port, () => {
+app.listen(3000, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
